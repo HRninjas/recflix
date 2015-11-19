@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             dev: {
                 script: 'server.js'
             }
-        },
+        }
 
         // uglify: {
         //     my_target: {
@@ -54,37 +54,37 @@ module.exports = function(grunt) {
         //         src: ['public/dist/style_min.css']
         //     }
         // },
-         watch: {
-             scripts: {
-                 files: [
-                     'public/client/**/*.js',
-                     'public/lib/**/*.js',
-                 ],
-                 tasks: [
-                     'concat',
-                     'uglify'
-                 ]
-            },
-             css: {
-                 files: 'public/*.css',
-                 tasks: ['cssmin']
-             }
-         },
+         // watch: {
+         //     scripts: {
+         //         files: [
+         //             'public/client/**/*.js',
+         //             'public/lib/**/*.js',
+         //         ],
+         //         tasks: [
+         //             'concat',
+         //             'uglify'
+         //         ]
+         //    },
+         //     css: {
+         //         files: 'public/*.css',
+         //         tasks: ['cssmin']
+         //     }
+         // },
 
-        shell: {
-            options: {
-                stderr: true,
-                stdout: true
-            },
-            multiple: {
-              command: [
-                'git add .',
-                'git commit -m "deploying changes"',
-                'git push heroku master',
-                'git push origin master'
-              ].join('&&')
-            }
-        },
+        // shell: {
+        //     options: {
+        //         stderr: true,
+        //         stdout: true
+        //     },
+        //     multiple: {
+        //       command: [
+        //         'git add .',
+        //         'git commit -m "deploying changes"',
+        //         'git push heroku master',
+        //         'git push origin master'
+        //       ].join('&&')
+        //     }
+        // },
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
         nodemon.stdout.pipe(process.stdout);
         nodemon.stderr.pipe(process.stderr);
 
-        grunt.task.run(['watch']);
+        // grunt.task.run(['watch']);
     });
 
     ////////////////////////////////////////////////////
