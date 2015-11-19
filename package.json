@@ -4,6 +4,7 @@
   "description": "Movie Recommendation App",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "test"
   },
   "repository": {
