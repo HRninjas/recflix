@@ -14,16 +14,24 @@ if (process.env.MONGOLAB_URI) {
   mongoose.connect(dbConfig.url);
 }
 
+var db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', function() {
+  console.log('db connection open, sweet!');
+  startServer();
+});
+
+
+
 var app = express();
-// connect to correct db
 
 require('./server/config/middleware.js')(app, express);
 
 // Configuring Passport
 var passport = require('passport');
 var expressSession = require('express-session');
-// TODO - Why Do we need this key ?
-//app.use(expressSession({secret: 'mySecretKey'}));
+
+//app.use(session({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -38,13 +46,28 @@ initPassport(passport);
 
 var routes = require('./server/users/userRoutes')(passport);
 app.use('/', routes);
+var movies = require('./server/movies/movieDBController');
+app.use('/movies', movies);
+
+//app.use('/', routes);
+
+// This middleware will allow us to use the currentUser in our views and routes.
+app.use(function(req, res, next) {
+  global.currentUser = req.user;
+  next();
+});
+
+// // Routes
+// app.use('/', routes);
+// // app.use('/users', users);
+// app.use('/movies', movies);
 
 /// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
 // development error handler
 // will print stacktrace
@@ -58,9 +81,13 @@ app.use(function(req, res, next) {
 //   });
 // }
 
-app.listen(process.env.PORT || 3000, function() {
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+
+// omar:
+function startServer() {
+  var server = app.listen(process.env.PORT || 3000, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });  
+}
 
 
 module.exports = app;
