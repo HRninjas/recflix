@@ -8,6 +8,7 @@ angular.module('movieApp.services', [])
     })
     .then(function(resp) {
       //if (err) console.log(err);
+      console.log("res",resp.data)
       return resp.data;
     });
   };

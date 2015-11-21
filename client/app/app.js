@@ -1,7 +1,7 @@
 angular.module('movieApp', [
   'movieApp.services',
   'movieApp.movies',
-  'movieApp.search',
+ // 'movieApp.search',
   'movieApp.auth',
   'movieApp.toWatch',
   'ngRoute',
