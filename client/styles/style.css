@@ -1,157 +1,49 @@
-/* Our styles: */
-
-#movieImage {
-  width: 140px;
-  height: 210px;
-}
-
-
-
-body {
-  margin: 0;
-  margin-top: 10px;
-  font-family: arial, sans-serif;
-}
-
-a {
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-h1 {
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.navigation {
-  width: 100%;
-  height: 40px;
-  background-color: #eee;
-}
-
-.navigation ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.navigation li {
+.input-group{
   float: left;
 }
 
-.navigation li a {
-  width: 100px;
-  height: 20px;
-  line-height: 20px;
-  padding: 10px;
-  display: block;
-  text-align: center;
+#moviesLayout {
+  line-height: 0;
+  -webkit-column-count: 5;
+  -webkit-column-gap:   0px;
+  -moz-column-count:   5;
+  -moz-column-gap:      0px;
+  column-count:         5;
+  column-gap:           0px;  
+
 }
 
-.navigation li a:hover {
-  background-color: #ddd;
+#singleMovie {
+    -webkit-column-break-inside: avoid;
+  width: 100% !important;
+  height: auto !important;
 }
 
-.navigation li a.selected {
-  background-color: #ccc;
+@media (max-width: 1200px) {
+#movieslayout  {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
 }
-
-#container {
-  clear: both;
-  margin-top: 10px;
+@media (max-width: 1000px) {
+#movieslayout  {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
 }
-
-.link {
-  clear: both;
-  margin-bottom: 5px;
-  padding: 5px;
-  min-height: 50px;
+@media (max-width: 800px) {
+#movieslayout  {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
 }
-
-.link:hover {
-  background-color: #efe;
+@media (max-width: 400px) {
+#movieslayout  {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
 }
-
-.link img {
-  float: left;
-  margin: 0 5px;
-}
-
-.link .visits {
-  float: right;
-  margin-right: 10px;
-  margin-left: 20px;
-}
-
-.link .visits .count {
-  font-size: 46px;
-  font-weight: 600;
-}
-
-.link .title {
-  font-weight: 600;
-}
-
-.link .original {
-  color: #aaa;
-  font-size: 12px;
-}
-
-.link .info {
-  margin-left: 55px;
-}
-
-form {
-  margin: 10px;
-}
-
-input {
-  width: 360px;
-  display: block;
-  font-size: 13px;
-  padding: 5px;
-  margin-bottom: 5px;
-}
-
-input[type=url] {
-  display: inline
-}
-
-input[type=url]:focus {
-  outline: none;
-}
-
-
-.error {
-  border: red solid 4px;
-  padding: 10px;
-  margin: 0 10px;
-}
-
-.clean {
-  border: #efe solid 2px;
-  padding: 10px;
-  margin: 0 10px;
-}
-
-.creator {
-  height: 50px;
-}
-
-.creator form {
-  float: left;
-  height: 80px;
-}
-
-.creator img.spinner {
-  height: 46px;
-  margin-bottom: 5px;
-  padding: 10px;
-  display: none;
-}
-
-.creator .message {
-  clear: both;
-}
-
